@@ -1,7 +1,5 @@
 
-<div align="center">
-<img src="images/icon.png" width="150">
-</div>
+![Icon](images/icon.png)
 
 # Magma syntax support extension
 
@@ -9,7 +7,7 @@
 
 1. Create your Magma source file
 
-> <img src="images/icon.png" width="15"> &nbsp; app.mg
+> ![icon](images/little-icon.png) app.mg
 
 1. Once you have that feel free to write your magma code
 2. Report any issues or bugs - it will help us developing the extension
