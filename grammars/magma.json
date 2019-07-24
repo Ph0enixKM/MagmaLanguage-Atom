@@ -1,6 +1,11 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Magma",
+	"fileTypes": [
+		"mg",
+		"mgm",
+		"magma"
+	],
 	"patterns": [
 		{
 			"include": "#keywords"
