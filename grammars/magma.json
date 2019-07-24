@@ -1,0 +1,265 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Magma",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#chars"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#commentLine"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+			{
+				"match": "=>",
+				"name" : "keyword.control.magma"
+			},
+			{
+				"match": "(let|const)\\s+([^\\{|\\s]+)\\s+(\\w\\S*)",
+
+				"captures": {
+					"1" : {
+						"name" : "keyword.control.magma"
+					},
+					"2" : {
+						"name" : "entity.name.type.magma"
+					},
+					"3" : {
+						"name" : "variable.name"
+					}
+				}
+			},
+			{
+				"match": "(fun|native)\\s+([^\\(|\\s]+)\\s+(\\w[^\\(]+)",
+
+				"captures": {
+					"1" : {
+						"name" : "keyword.control.magma"
+					},
+					"2" : {
+						"name" : "entity.name.type.magma"
+					},
+					"3" : {
+						"name" : "entity.name.function"
+					}
+				}
+			},
+			{
+				"match": "(tree)\\s+(\\S+)",
+				"name": "entity.name.class.capital.tree",
+				"captures": {
+					"1" : {
+						"name" : "keyword.control.magma"
+					},
+					"2" : {
+						"name" : "entity.name.class.capital.tree"
+					}
+				}
+			},
+			{
+				"match": "^\\s*(\\>)\\s+(\\S+)",
+				"name": "entity.name.class.capital.tree",
+				"captures": {
+					"1" : {
+						"name" : "keyword.control.magma"
+					},
+					"2" : {
+						"name" : "entity.name.class.capital.tree"
+					}
+				}
+			},
+			{
+				"match": "(pub|priv|pro)\\s+(setup)",
+				"name": "keyword.control.magma"
+			},
+
+			{
+				"name": "keyword.control.magma",
+				"match": "\\b(resolve|reject|if|while|for|in|to|new|return|let|const|loop|fun|class|setup|else|switch|break|continue|case|pub|priv|pro|using|import|from|export|async|await|and|or|not|native)\\b"
+			},
+
+			{
+				"name": "keyword.control.magma.reference",
+				"match": "\\&|\\!"
+			},
+			{
+				"match": "\\b(true|false|null|NULL|undefined)\\b(?![?!])",
+				"name": "constant.language.boolean.magma"
+			},
+			{
+				"match": "^\\s*\\d+\\s*$",
+				"name": "constant.language.int.magma"
+			},
+			{
+				"match": "[+-]?([0-9]*[.])?[0-9]+",
+				"name": "constant.language.float.magma"
+			},
+			{
+				"match": "\\bthis",
+				"name": "variable.parameter.magma variable.language.this.js.magma"
+			},
+			{
+				"name": "support.function.git-rebase",
+				"match": "\\b(put|log|get)\\s*(?=\\([\\S\\s]+*?\\))"
+			},
+			{
+				"match": "\\b\\w+\\s*(?=\\([\\S\\s]*?\\)?)",
+				"name": "entity.name.function"
+			},
+			{
+				"match": "\\b[A-Z]\\w*\\b",
+				"name": "entity.name.class.capital"
+			},
+			{
+				"name" : "support.function.git-rebase.magma.symbol",
+				"match" : "(\\+|\\-|\\^|\\*|\\=|\\||\\%)"
+			},
+			{
+				"name" : "comment.block",
+				"match": "(\\/\\*[\\w\\'\\s\\r\\n\\*]*\\*\\/)"
+			},
+			{
+				"name" : "variable.name",
+				"match" : "\\b\\w+\\b"
+			}
+			]
+		},
+		"string-insides" : {
+			"patterns": [
+				{
+					"name": "constant.character.escape.magma",
+					"match": "\\\\."
+				},
+				{
+					"name": "keyword.control.magma",
+					"begin" : "\\$\\{",
+					"end" : "\\}",
+					"patterns": [
+						{
+							"include" : "$self"
+						}
+					]
+				},
+				{
+					"match": "(</?)(\\S+)(>)",
+					"captures": {
+						"1" : {
+							"name" : "meta.tag"
+						},
+						"2" : {
+							"name" : "variable.name.magma"
+						},
+						"3" : {
+							"name" : "meta.tag"
+						}
+					}
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.single.magma",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"include": "#string-insides"
+				}
+			]
+		},
+		"chars": {
+			"name": "string.quoted.char",
+			"begin": "`",
+			"end": "`",
+			"patterns": [
+				{
+					"name": "constant.character.escape.magma",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"name": "comment.block",
+			"begin": "/\\*",
+			"end": "\\*/",
+			"patterns": [
+				{
+					"include": "#todos"
+				},
+				{
+					"include": "#docs"
+				}
+			]
+		},
+		"commentLine" : {
+			"name":"comment.line.double-slash",
+			"begin" : "//",
+			"end" : "$",
+			"patterns": [
+				{
+					"include": "#todos"
+				}
+			]
+		},
+		"docs" : {
+			"patterns": [
+				{
+					"match": "(@\\S+)\\s+(\\{.*\\})\\s+(\\S+)",
+					"captures": {
+						"1" : {
+							"name" : "keyword.control.param.doc"
+						},
+						"2" : {
+							"name" : "entity.name.class.doc"
+						},
+						"3" : {
+							"name" : "variable.name.doc"
+						}
+					}
+				},
+				{
+					"match": "(@\\S+)\\s+(\\{.*\\})",
+					"captures": {
+						"1" : {
+							"name" : "keyword.control.param.doc"
+						},
+						"2" : {
+							"name" : "entity.name.class.doc"
+						}
+					}
+				},
+				{
+					"match": "(@\\S+)",
+					"name" : "keyword.control.param.doc"
+				}
+			]
+		},
+		"todos" : {
+			"patterns": [
+				{
+					"name": "keyword.control",
+					"match": "\\b(TODO|QUESTION|FIXME)\\:*"
+				},
+				{
+					"name": "variable.name",
+					"match": "\\b(ERROR|IMPORTANT)\\:*"
+				},
+				{
+					"name": "constant.name",
+					"match": "\\b(WARNING)\\:*"
+				}
+			]
+		}
+	},
+	"scopeName": "source.magma"
+}

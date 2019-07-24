@@ -1,0 +1,17 @@
+{
+  "name": "magma-language",
+  "version": "0.0.0",
+  "description": "Magma Language Support",
+  "keywords": [
+    "magma",
+    "language",
+    "support",
+    "PhoenixArts",
+    "PHX"
+  ],
+  "repository": "https://github.com/atom/magma-syntax",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}
