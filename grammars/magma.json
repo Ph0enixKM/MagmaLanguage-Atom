@@ -31,7 +31,7 @@
 				"name" : "keyword.control.magma"
 			},
 			{
-				"match": "(let|const)\\s+([^\\{|\\s]+)\\s+(\\w\\S*)",
+				"match": "(let|const|ref|mut)\\s+([^\\{|\\s]+)\\s+(\\w\\S*)",
 
 				"captures": {
 					"1" : {
@@ -46,7 +46,7 @@
 				}
 			},
 			{
-				"match": "(fun|native)\\s+([^\\(|\\s]+)\\s+(\\w[^\\(]+)",
+				"match": "(fun)\\s+([^\\(|\\s]\\S*)\\s+(\\w[^\\(]+)",
 
 				"captures": {
 					"1" : {
@@ -57,6 +57,18 @@
 					},
 					"3" : {
 						"name" : "entity.name.function"
+					}
+				}
+			},
+			{
+				"match": "(new)\\s+([A-Za-z|_]\\S*)(?=\\()",
+
+				"captures": {
+					"1" : {
+						"name" : "keyword.control.magma"
+					},
+					"2" : {
+						"name" : "entity.name.type.magma"
 					}
 				}
 			},
@@ -85,13 +97,49 @@
 				}
 			},
 			{
+				"match": "^\\s*(seed)\\s+(\\S+)",
+				"name": "entity.name.class.capital.tree",
+				"captures": {
+					"1" : {
+						"name" : "keyword.control.magma"
+					},
+					"2" : {
+						"name" : "entity.name.class.capital.tree"
+					}
+				}
+			},
+			{
+				"match": "\\s*(\\w\\S*)\\s+(setup)",
+
+				"captures": {
+					"1" : {
+						"name" : "entity.name.type.magma"
+					},
+					"2" : {
+						"name" : "keyword.control.magma"
+					}
+				}
+			},
+			{
+				"match": "\\s*(\\w\\S*)\\s+(alias)",
+
+				"captures": {
+					"1" : {
+						"name" : "entity.name.type.magma"
+					},
+					"2" : {
+						"name" : "keyword.control.magma"
+					}
+				}
+			},
+			{
 				"match": "(pub|priv|pro)\\s+(setup)",
 				"name": "keyword.control.magma"
 			},
 
 			{
 				"name": "keyword.control.magma",
-				"match": "\\b(resolve|reject|if|while|for|in|to|new|return|let|const|loop|fun|class|setup|else|switch|break|continue|case|pub|priv|pro|using|import|from|export|async|await|and|or|not|native)\\b"
+				"match": "\\b(or|type|if|while|for|in|to|new|return|let|const|loop|fun|idea|setup|else|switch|break|continue|case|pub|priv|pro|with|import|from|export|async|await|and|or|not|native)\\b"
 			},
 
 			{
@@ -106,6 +154,7 @@
 				"match": "^\\s*\\d+\\s*$",
 				"name": "constant.language.int.magma"
 			},
+
 			{
 				"match": "[+-]?([0-9]*[.])?[0-9]+",
 				"name": "constant.language.float.magma"
@@ -136,7 +185,7 @@
 			},
 			{
 				"name" : "variable.name",
-				"match" : "\\b\\w+\\b"
+				"match" : "\\b[\\w|\\_|\\$][^\\s|\\[|\\.|\\,]*\\b"
 			}
 			]
 		},
