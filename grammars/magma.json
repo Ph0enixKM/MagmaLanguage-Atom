@@ -139,7 +139,7 @@
 
 			{
 				"name": "keyword.control.magma",
-				"match": "\\b(or|type|if|while|for|in|to|new|return|let|const|loop|fun|idea|setup|else|switch|break|continue|case|pub|priv|pro|with|import|from|export|async|await|and|or|not|native)\\b"
+				"match": "\\b(or|type|if|while|for|in|to|new|return|let|const|loop|fun|idea|setup|else|switch|break|continue|case|pub|priv|pro|with|import|from|export|of|and|or|not)\\b"
 			},
 
 			{
