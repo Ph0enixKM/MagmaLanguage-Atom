@@ -61,7 +61,7 @@
 				}
 			},
 			{
-				"match": "(new)\\s+([A-Za-z|_]\\S*)(?=\\()",
+				"match": "(new)\\s+([A-Za-z|_][^\\(|\\s]*)(?=\\()",
 
 				"captures": {
 					"1" : {
@@ -139,12 +139,12 @@
 
 			{
 				"name": "keyword.control.magma",
-				"match": "\\b(or|type|if|while|for|in|to|new|return|let|const|loop|fun|idea|setup|else|switch|break|continue|case|pub|priv|pro|with|import|from|export|of|and|or|not)\\b"
+				"match": "\\b(async|or|type|if|while|for|in|to|new|return|let|const|loop|fun|idea|setup|else|switch|break|continue|case|pub|priv|pro|with|import|from|export|of|and|or|not)\\b"
 			},
 
 			{
 				"name": "keyword.control.magma.reference",
-				"match": "\\&|\\!"
+				"match": "(&(?=[^&])|\\!(?=[^\\!]))"
 			},
 			{
 				"match": "\\b(true|false|null|NULL|undefined)\\b(?![?!])",
@@ -177,7 +177,7 @@
 			},
 			{
 				"name" : "support.function.git-rebase.magma.symbol",
-				"match" : "(\\+|\\-|\\^|\\*|\\=|\\||\\%)"
+				"match" : "(\\+|\\-|\\^|\\*|\\=|\\||\\%|&&)"
 			},
 			{
 				"name" : "comment.block",
