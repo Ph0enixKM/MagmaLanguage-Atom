@@ -73,7 +73,7 @@
 				}
 			},
 			{
-				"match": "(tree)\\s+(\\S+)",
+				"match": "(unit)\\s+(\\S+)",
 				"name": "entity.name.class.capital.tree",
 				"captures": {
 					"1" : {
@@ -85,7 +85,25 @@
 				}
 			},
 			{
-				"match": "^\\s*(\\>)\\s+(\\S+)",
+				"match": "^\\s*(idea)\\s+(\\S+)\\s+(of)\\s+(\\S+)",
+				"name": "entity.name.class.capital.tree",
+				"captures": {
+					"1" : {
+						"name" : "keyword.control.magma"
+					},
+					"2" : {
+						"name" : "entity.name.class.capital.tree"
+					},
+					"3" : {
+						"name" : "keyword.control.magma"
+					},
+					"4" : {
+						"name" : "entity.name.class.capital.tree"
+					}
+				}
+			},
+			{
+				"match": "^\\s*(idea)\\s+(\\S+)",
 				"name": "entity.name.class.capital.tree",
 				"captures": {
 					"1" : {
@@ -97,26 +115,19 @@
 				}
 			},
 			{
-				"match": "^\\s*(seed)\\s+(\\S+)",
-				"name": "entity.name.class.capital.tree",
+				"match": "^\\s*(type)\\s+(.*)\\s+(is)\\s+(\\S+)\\s+\\{",
 				"captures": {
 					"1" : {
 						"name" : "keyword.control.magma"
 					},
 					"2" : {
-						"name" : "entity.name.class.capital.tree"
-					}
-				}
-			},
-			{
-				"match": "\\s*(\\w\\S*)\\s+(alias)",
-
-				"captures": {
-					"1" : {
+						"name" : "variable.name"
+					},
+					"3" : {
+						"name" : "keyword.control.magma"
+					},
+					"4" : {
 						"name" : "entity.name.type.magma"
-					},
-					"2" : {
-						"name" : "keyword.control.magma"
 					}
 				}
 			},
@@ -127,7 +138,7 @@
 
 			{
 				"name": "keyword.control.magma",
-				"match": "\\b(async|or|type|if|while|for|in|to|new|return|let|const|loop|fun|idea|else|switch|break|continue|case|pub|priv|pro|with|import|from|export|of|and|or|not)\\b"
+				"match": "\\b(unit|as|cpp|external|async|type|if|while|for|in|to|new|return|let|const|loop|fun|idea|else|switch|break|continue|case|pub|priv|pro|with|import|from|export|of)\\b"
 			},
 
 			{
@@ -165,7 +176,7 @@
 			},
 			{
 				"name" : "support.function.git-rebase.magma.symbol",
-				"match" : "(\\+|\\-|\\^|\\*|\\=|\\||\\%|&&)"
+				"match" : "(\\+|\\-|\\^|\\*|\\=|\\||\\%|&&|or|and)"
 			},
 			{
 				"name" : "comment.block",

@@ -2,7 +2,7 @@
 '.source.mg, .source.magma, .source.mgm' :
     'Loop':
         'prefix': 'loop'
-        'body': 'loop ${1:iter} in ${2:number} {\n\t$0\n}'
+        'body': 'loop ${1:array} with ${2:iter} {\n\t$0\n}'
         'description': 'For Loop'
     'If':
         'prefix': 'if'
@@ -10,18 +10,18 @@
         'description': 'If Conditional'
     'Function':
         'prefix': 'fun'
-        'body': 'fun ${1:void} ${2:name}(${3:param}) {\n\t$0\n}'
+        'body': 'fun ${2:name}(${3:param}) {\n\t$0\n}'
         'description': 'For Loop'
     'Log':
         'prefix': 'log'
         'body': 'log($0)'
         'description': 'Log Function'
     'Class':
-        'prefix': 'class'
-        'body': '> ${1:Name} {\n\tsetup(${2:params}) {\n\t\t$0\n\t}\n}'
+        'prefix': 'idea'
+        'body': 'idea ${1:Name} {\n\tfun setup(${2:params}) {\n\t\t$0\n\t}\n}'
         'description': 'Class'
     'Tree':
-        'prefix': 'tree'
+        'prefix': 'unit'
         'scope': 'magma, soruce.magma'
-        'body': 'tree ${1:Name} {\n\t$0\n}'
-        'description': 'Tree'
+        'body': 'unit ${1:Name} {\n\t$0\n}'
+        'description': 'Unit'
